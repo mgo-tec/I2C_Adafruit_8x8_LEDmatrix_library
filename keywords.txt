@@ -1,0 +1,11 @@
+I2C_Adafruit_8x8_LED_matrix	KEYWORD1
+LED_Driver_Initialize	KEYWORD2
+LED_Driver_Setup	KEYWORD2
+LED_Driver_Blink	KEYWORD2
+LED_Driver_Brightness	KEYWORD2
+LED_Driver_DisplayInt	KEYWORD2
+LED_Dot_Rotation	KEYWORD2
+LED_Black_White_Reversal	KEYWORD2
+LED_8x8mini_Disp_Out	KEYWORD2
+LED_8x8BiColor_Disp_Out	KEYWORD2
+LED_Driver_DisplayOutput	KEYWORD2
