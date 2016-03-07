@@ -7,4 +7,4 @@ This is the Arduino IDE library of Adafruit I2C 8x8 LED matrix.
 
 参照ブログ
 
-https://www.mgo-tec.com
+https://www.mgo-tec.com/blog-entry-wroom-websocket-messageboard-04.html
