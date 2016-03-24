@@ -6,6 +6,7 @@ LED_Driver_Brightness	KEYWORD2
 LED_Driver_DisplayInt	KEYWORD2
 LED_Dot_Rotation	KEYWORD2
 LED_Black_White_Reversal	KEYWORD2
+Scroller_Dot_Replace	KEYWORD2
 LED_8x8mini_Disp_Out	KEYWORD2
 LED_8x8BiColor_Disp_Out	KEYWORD2
 LED_Driver_DisplayOutput	KEYWORD2

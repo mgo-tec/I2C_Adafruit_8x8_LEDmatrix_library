@@ -1,6 +1,6 @@
 /*
   I2C_Adafruit_8x8_LED_matrix.h - for ESP-WROOM-02 ( esp8266 )
-  Beta version 1.0
+  Beta version 1.1
   This is the Arduino IDE library of Adafruit I2C 8x8 LED matrix.
   
 The MIT License (MIT)
@@ -43,6 +43,7 @@ public:
   void LED_Driver_DisplayInt(uint8_t __LDaddrs);
   void LED_Dot_Rotation(int16_t __angle, uint8_t* __buf, uint8_t* __RotBuf);
   void LED_Black_White_Reversal(boolean __rev, uint8_t* __buf, uint8_t* __buf_cnv);
+  void Scroller_Dot_Replace(uint8_t __drection, uint8_t* __next_buff, uint8_t* __scl_buff_1, uint8_t* __Orign_buff);
   void LED_8x8mini_Disp_Out(uint8_t __LDaddrs, uint8_t* __Bdot1);
   void LED_8x8BiColor_Disp_Out(uint8_t __LDaddrs, uint8_t __color, byte* __Bdot1);
   void LED_Driver_DisplayOutput(uint8_t __LDaddrs, uint8_t* __DotB1, uint8_t* __DotB2);

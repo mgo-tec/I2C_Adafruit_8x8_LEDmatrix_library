@@ -1,6 +1,6 @@
 /*
   I2C_Adafruit_8x8_LED_matrix.cpp - for ESP-WROOM-02 ( esp8266 )
-  Beta version 1.0
+  Beta version 1.1
   This is the Arduino IDE library of Adafruit I2C 8x8 LED matrix.
   
 The MIT License (MIT)
@@ -123,6 +123,52 @@ void I2C_Adafruit_8x8_LED_matrix::LED_Black_White_Reversal(boolean __rev, uint8_
     }
   }
 }
+
+//*************************Dot Scroll Replace**************************************
+void I2C_Adafruit_8x8_LED_matrix::Scroller_Dot_Replace(uint8_t __drection, uint8_t* __next_buff, uint8_t* __scl_buff_1, uint8_t* __Orign_buff)
+{
+  uint8_t __i;
+
+  switch( __drection ){
+    case 0:        // R <--- L
+      for(__i=0 ; __i<8 ; __i++){
+        bitWrite( __next_buff[__i],7, bitRead( __scl_buff_1[__i],7));
+        __scl_buff_1[__i] = __scl_buff_1[__i]<<1;
+        bitWrite( __scl_buff_1[__i],0, bitRead( __Orign_buff[__i],7));
+        __Orign_buff[__i] = __Orign_buff[__i]<<1;
+      }
+      break;
+    case 1:        // L ---> R
+      for(__i=0 ; __i<8 ; __i++){
+        bitWrite( __next_buff[__i],0, bitRead( __scl_buff_1[__i],0));
+        __scl_buff_1[__i] = __scl_buff_1[__i]>>1;
+        bitWrite( __scl_buff_1[__i],7, bitRead( __Orign_buff[__i],0));
+        __Orign_buff[__i] = __Orign_buff[__i]>>1;
+      }
+      break;
+    case 2:      // Lower ---> Upper
+      __next_buff[0] = __scl_buff_1[0];
+      for(__i=0 ; __i<7 ; __i++){
+        __scl_buff_1[__i] = __scl_buff_1[__i+1];
+      }
+      __scl_buff_1[7] = __Orign_buff[0];
+      for(__i=0 ; __i<7 ; __i++){
+        __Orign_buff[__i] = __Orign_buff[__i+1];
+      }
+      break;
+    case 3:        // Upper ---> Lower
+      __next_buff[7] = __scl_buff_1[7];
+      for(__i=7 ; __i>0 ; __i--){
+        __scl_buff_1[__i] = __scl_buff_1[__i-1];
+      }
+      __scl_buff_1[0] = __Orign_buff[7];
+      for(__i=7 ; __i>0 ; __i--){
+        __Orign_buff[__i] = __Orign_buff[__i-1];
+      }
+      break;
+  }
+}
+
 //**********************Adafruit Mini 8x8 Dot Bit Convert & Display OUT******************************
 void I2C_Adafruit_8x8_LED_matrix::LED_8x8mini_Disp_Out(uint8_t __LDaddrs, uint8_t* __Bdot1)
 {
